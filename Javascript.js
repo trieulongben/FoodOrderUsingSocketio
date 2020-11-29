@@ -21,16 +21,28 @@ function objectifyForm(formArray) {
     }
     return returnArray;
 }
+function Listshow(lisorder){
+    var counter=_.countBy(lisorder);
+  console.log(_.countBy(lisorder));
+    var orderli = document.getElementById('Cartlist');
+
+    var template = '<li>'+ counter+  '</li>'
+;
+
+saferInnerHTML(orderli, template);
+  }
 
 function additem(){
     var lisorder=[];
     $(document).ready(function(){
         $("#addbutton").click(function(){
             var x= $("#addbutton").value();
-            lisorder.push(x);
+            lisorder.push(lisorder);
+            console.log(json.stringtify(lisorder));
+            Listshow(lisorder);
 
-}
-    }
+})
+})
 }
 
 /*!
