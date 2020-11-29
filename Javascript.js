@@ -34,9 +34,24 @@ saferInnerHTML(orderli, template);
 
 function additem(){
     var lisorder=[];
+
+    var myEl = document.getElementById('addbutton').addEventListener('click', function() {
+      console.log("fk");
+      var x= $("#addbutton").val();
+            console.log(x);
+            lisorder.push(x);
+            console.log(lisorder);
+            Listshow(lisorder);
+
+  }, false);
+}
+additem();
+/*
+
     $(document).ready(function(){
         $("#addbutton").click(function(){
             var x= $("#addbutton").value();
+            console.log(x);
             lisorder.push(lisorder);
             console.log(json.stringtify(lisorder));
             Listshow(lisorder);
@@ -44,6 +59,7 @@ function additem(){
 })
 })
 }
+*/
 
 /*!
 $(document).ready(function(){
