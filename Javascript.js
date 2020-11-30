@@ -24,27 +24,35 @@ function objectifyForm(formArray) {
 function Listshow(lisorder){
     var counter=_.countBy(lisorder);
   console.log(_.countBy(lisorder));
-    var orderli = document.getElementById('Cartlist');
-
-    var template = '<li>'+ counter+  '</li>'
+    var template= document.createElement("li");
+    console.log(template);
+    template.innerText=JSON.stringify(counter);
+    document.getElementById('Cartlist').appendChild(template);
 ;
 
-saferInnerHTML(orderli, template);
   }
 
 function additem(){
     var lisorder=[];
+    var myEl =document.getElementsByClassName('addbutton');
+    console.log(myEl);
+    console.log(myEl[0]);
+    console.log(myEl.length);
+    for (let i=0;i<myEl.length;i++){
+        console.log("aaa");
+        myEl[i].addEventListener("click",function(){
+          console.log("fk");
+          var x= myEl[i].value;
+                console.log(x);
+                lisorder.push(x);
+                console.log(lisorder);
+                Listshow(lisorder);
+    
+      });
+      }
 
-    var myEl = document.getElementById('addbutton').addEventListener('click', function() {
-      console.log("fk");
-      var x= $("#addbutton").val();
-            console.log(x);
-            lisorder.push(x);
-            console.log(lisorder);
-            Listshow(lisorder);
-
-  }, false);
-}
+ 
+    }
 additem();
 /*
 
