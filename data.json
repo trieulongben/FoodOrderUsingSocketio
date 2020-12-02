@@ -1,0 +1,8 @@
+[{"CustomerID": "0001",
+        "List of Food" :[
+            {"nameOfFood": "Rice", "Amount": "1", "Price": "5.000VND"},
+            {"nameOfFood": "Noodle", "Amount": "2", "Price": "10.000VND"},
+            {"nameOfFood": "Soup", "Amount": "3", "Price": "15.000VND"}
+        ]  
+    }
+]
