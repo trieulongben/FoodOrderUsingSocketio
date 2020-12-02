@@ -1,3 +1,35 @@
+class Food{
+  constructor(name,value){
+    this.name=name;
+    this.description=this.description;
+  }
+  getName(){
+    return this.name;
+  }
+  getValue(){
+    return this.value;
+  }
+  addValue(){
+    this.value+=1;
+  }
+}
+
+
+var mi=new Food(mi,0);
+var com=new Food(com,0);
+var soda=new Food(soda,0);
+var com2=new Food(com2,0);
+var mi2=new Food(mi2,0);
+var nuoc=new Food(nuoc,0);
+
+
+
+
+
+
+
+
+
 function List(arr) {
     var out = "";
     var i;
@@ -21,33 +53,37 @@ function objectifyForm(formArray) {
     }
     return returnArray;
 }
-function Listshow(lisorder){
-    var counter=_.countBy(lisorder);
-  console.log(_.countBy(lisorder));
-    var template= document.createElement("li");
-    console.log(template);
-    template.innerText=JSON.stringify(counter);
-    document.getElementById('Cartlist').appendChild(template);
-;
-
+function Listshow(x){
+    if(x>0){
+      template.innerText=JSON.stringify(counter[i]);
+      document.getElementById('Cartlist').appendChild(template);
+    }
   }
+var lisorder=[];
+var lisname=["mi","soda","mi2","com","com2","nuoc"];
+lisname.forEach(function(name) {
+  var singleObj = {}
+  singleObj['name'] = name;
+  singleObj['value'] =0;
+  lisorder.push(singleObj);
+  console.log(lisorder);
+});
 
-function additem(){
-    var lisorder=[];
+function additem(lisorder){
     var myEl =document.getElementsByClassName('addbutton');
     console.log(myEl);
     console.log(myEl[0]);
     console.log(myEl.length);
     for (let i=0;i<myEl.length;i++){
-        console.log("aaa");
         myEl[i].addEventListener("click",function(){
-          console.log("fk");
           var x= myEl[i].value;
-                console.log(x);
-                lisorder.push(x);
-                console.log(lisorder);
-                Listshow(lisorder);
-    
+          if(x in lisorder[name])
+          {
+            lisorder[x]
+          }
+          console.log(x);
+          console.log(x.getValue);
+          Listshow(x);
       });
       }
 
