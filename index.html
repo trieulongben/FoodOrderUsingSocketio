@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> DEADLINE</title>
+  </head>
+  <body>
+    <div class=" container-fluid" id="headerbar" style="background-color: #999576;">
+    <h3 class=" text-center col-sm-12" style="font-size:30px;color:white;" >FOOD ORDER <button onclick="opencart()" class="fa fa-shopping-cart" background-position="justify" style="background-position: right ; font-size:24px"></button></i>
+    </h3>
+    </div>
+    <div class="container">
+      <h1 class="text-center" style="font-size:50px;color:#FFCC5E; font-style:oblique;padding :10px; background-color:#9EDAFF"> Main Dishes</h1>
+        <div class="row" style="background-color: #CCBB37;  border-radius: 25px;">
+          <div class="col-sm">
+            <div class="text-center " >
+            <img class="img-responsive img-thumbnail" src="mi-trộn-recipe-main-photo.jpg">
+            <p class="text-center" style="font-size:30px;font-style:oblique;color:ivory">Cơm</p>
+            <button  class="btn btn-primary addbutton" name="addbutton" value="mi">Đặt hàng</button>
+          
+            </div>
+            
+          </div>
+          <div class="col-sm ">
+            <div class="text-center " >
+                <img class="img-responsive img-thumbnail" src="/969_thuc_an_cho_cho_canh.jpg">
+                <p class="text-center"style="font-size:30px;font-style:oblique;color:ivory" >Cơm chó</p>
+                <button  class="btn btn-primary addbutton" name="addbutton" value="com">Đặt hàng</button>
+            </div>
+          </div>
+          <div class="col-sm ">
+            <div class="text-center " >
+            <img class="img-responsive img-thumbnail" style="max-height: 90%;" src="cach-pha-soda-dua-hau.jpg">
+            <p class="text-center" style="font-size:30px;font-style:oblique;color:ivory">Tiết canh</p>
+            <button  class="btn btn-primary addbutton" name="addbutton" value="soda">Đặt hàng</button>
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center container" style="height: 30px;">
+        
+      </div>
+      <div class="container" style="padding-top:10px;background-color:brown; border-radius: 25px;">
+        <h1 class="text-center" style="font-size:50px;color:chocolate; font-style:oblique;padding :10px; background-color:antiquewhite"> The Special~</h1>
+        <div class="row">
+          <div class="col-sm">
+            <div class="text-center " >
+            <img class="img-responsive img-thumbnail" src="/tp.hcm-khuyen-dan-bo-an-thit-cho-co-nen-cam_16633118.jpg">
+            <span class="a"><p class="text-center" style="font-size:30px;font-style:oblique;color:ivory">Thịt trộn</p>
+            <button  class="btn btn-primary addbutton" name="addbutton" value="mi2">Đặt hàng</button></span>
+            </div>
+            
+          </div>
+          <div class="col-sm">
+            <div class="text-center " >
+                <img class="img-responsive img-thumbnail" src="/bun-dau-mam-tom-thap-cam.jpg">
+                <span class="a"><p class="text-center"style="font-size:30px;font-style:oblique;color:ivory" >Bún</p>
+                <button  class="btn btn-primary addbutton" name="addbutton"  value="com2">Đặt hàng</button></span>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="text-center " >
+            <img class="img-responsive img-thumbnail" style="max-height: 90%;" src="cach-pha-soda-dua-hau.jpg">
+            <span class="a"><p class="text-center" style="font-size:30px;font-style:oblique;color:ivory">Nước dưa leo</p>
+            <button  class="btn btn-primary addbutton"  name="addbutton" value="nuoc">Đặt hàng</button></span>
+        </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+    
+  </body>
+</html>
+<style>
+    span {
+        display:flexbox;
+        
+    }
+    .popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+</style>
+
+<div class="popup" id="popup">
+  <ul id="Cartlist"> Order List
+
+
+  </ul>
+  <button onclick="closecart()"> Close</button>
+</div>
+
+
+
+
+  
+  
+  
+  
+  <script src="lodash.js"></script>
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="Javascript.js"></script>
+
+    </body>
+  </html>
+  </div>
