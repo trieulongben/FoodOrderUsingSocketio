@@ -3,6 +3,9 @@ var listOrder = document.getElementsByClassName('handle-form');
 var btnProcessing = document.getElementById('btnProcessing');
 var btnReceive = document.getElementById('btnReceive');
 var test = document.getElementsByClassName('test');
+var innerCustomerID = document.getElementsByClassName('Check');
+var btnCheck = document.getElementById('btn-check');
+
 var dataTest = [{CustomerID: 0001,
 ListOfFood :[
     {nameOfFood: "Rice", Amount: 1, Price: "5.000VND"},
@@ -16,7 +19,6 @@ btnDone.onclick = () => {
         listOrder[0].className += ' hidden';
     }
     listOrder[1].className = listOrder[1].className.replace(' hidden','');
-    test[0].innerHTML = `<p> ${dataTest[0].CustomerID} </p>`;
 }
 
 btnProcessing.onclick = () => {
@@ -43,3 +45,11 @@ readTextFile("./data.json", function(text){
     console.log(dataTest[0].CustomerID);
 });
 
+btnCheck.onclick = () => {
+    let li = document.createElement ("LI");
+    li.append(data[0].CustomerID);
+    li.setAttribute('class',`index-text`)
+    innerCustomerID[0].appendChild(li);
+    
+    // innerCustomerID.append(li);
+}

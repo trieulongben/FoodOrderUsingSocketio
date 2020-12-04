@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
+
 <body>
     <header>
         <div class="font-Jost">. S e l l e r .</div>
@@ -25,17 +27,17 @@
         <!-- Tab for seller -->
         <div class="tab-container">
             <div class="tab-arrangement">
-                
-                    <div class="btn" id="btnReceive">
-                        <p>Receive</p>
-                    </div>
-                    <div class="btn" id="btnProcessing">
-                        <p>Processing</p>
-                    </div>
-                    <div class="btn" id="btnDone">
-                        <p>Done</p>
-                    </div>
-                
+
+                <div class="btn" id="btnReceive">
+                    <p>Receive</p>
+                </div>
+                <div class="btn" id="btnProcessing">
+                    <p>Processing</p>
+                </div>
+                <div class="btn" id="btnDone">
+                    <p>Done</p>
+                </div>
+
             </div>
         </div>
         <!-- Order form of customer -->
@@ -43,27 +45,68 @@
             <div class="order-form">
                 <div class="handle-form">
                     <div class="listOrder-container">
-                        <div class="listOrder  " style="background-color:lavender; ">Customer ID</div>
-                        <div class="listOrder " style="background-color:lavenderblush; ">List of Food</div>
-                        <div class="listOrder " style="background-color: lavender;">Amount</div>
-                        <div class="listOrder" style="background-color: lavenderblush; ">Price</div>
+                        <div class="listOrder  " style="background-color:lavender; ">
+                            <p>
+                                Customer ID
+                            </p>
+                            <ul class="Check"></ul>
+                        </div>
+                        <div class="listOrder " style="background-color:lavenderblush; ">
+                            <p>
+                                List of Food
+                            </p>
+                            <ul class="Check"></ul>
+                        </div>
+                        <div class="listOrder " style="background-color: lavender;">
+                            <p>
+                                Amount
+                            </p>
+                            <ul class="Check"></ul>
+                        </div>
+                        <div class="listOrder" style="background-color: lavenderblush; ">
+                            <p>
+                                Price
+                            </p>
+                            <ul class="Check"></ul>
+                        </div>
+
                     </div>
                     <!-- Button check form -->
-                    <button class="btnCheck">Check</button>
+                    <div class="btn-container">
+                        <button class="btnCheck" id="btn-check">Check</button>
+                        <button class="btnDone">Done</button>
+                    </div>
                 </div>
                 <div class="handle-form hidden">
                     <div class="listOrder-container">
-                        <div class="listOrder  " style="background-color:lavender; ">List of Food</div>
-                        <div class="listOrder " style="background-color:lavenderblush; ">Amount</div>
-                        <div class="listOrder " style="background-color: lavender;">Unit Price</div>
-                        <div class="listOrder" style="background-color: lavenderblush; ">Price</div>
+                        <div class="listOrder  " style="background-color:lavender; ">
+                            <p>
+                                List of Food
+                            </p>
+                        </div>
+                        <div class="listOrder " style="background-color:lavenderblush; ">
+                            <p>
+                                Amount
+                            </p>
+                        </div>
+                        <div class="listOrder " style="background-color: lavender;">
+                            <p>
+                                Unit Price
+                            </p>
+                        </div>
+                        <div class="listOrder" style="background-color: lavenderblush; ">
+                            <p>
+                                Price
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
     <script src="ClientSeller.js"></script>
 </body>
+
 </html>
