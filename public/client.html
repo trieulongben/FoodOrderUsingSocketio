@@ -103,20 +103,20 @@
   <form id="order" >
     <div class="form-group">
       <label for="Name">Name</label>
-      <input type="text" class="form-control" name="orderinfo[name]" aria-describedby="Fullname" placeholder="Enter Full Name">
+      <input type="text" class="form-control" id="name" aria-describedby="Fullname" placeholder="Enter Full Name">
     </div>
     <div class="form-group">
       <label for="PhoneNumber">Phone Number</label>
-      <input type="text" class="form-control" name="orderinfo[phone]" placeholder="Phone number">
+      <input type="text" class="form-control" id="phone" placeholder="Phone number">
     </div>
     <div class="form-group">
       <label for="Address">Address</label>
-      <input type="text" class="form-control"name="orderinfo[address]" placeholder="Address">
+      <input type="text" class="form-control"id="address" placeholder="Address">
     </div>
   </form>
   <ul id="Cartlist"> Order List
   </ul>
-  <button onclick="Getdata()" id="Savebutton">Save</button>
+  <button type="submit" onclick="Getdata()" id="Savebutton">Save</button>
   <button id="FormbSavebuttonutton"> Close</button>
 </div>
 
@@ -137,16 +137,22 @@ var foodlist=[
 {"name":"com2","value":0,"baseprice":50},
 {"name":"soda","value":0,"baseprice":60},
 {"name":"nuoc","value":0,"baseprice":60}]
+var information={};
+var data={};
 var price=0;
 var total;
 var jsonString;
 function Getdata(){
-  $( "#target" ).submit(function( event ) {
-jsonString = JSON.stringify(obj);
-console.log(jsonString);
-  }
+
+    var name=document.getElementById("name").value;
+    var phone=document.getElementById("phone").value;
+    var address=document.getElementById("address").value;
+    information={"name":name,"phone":phone,"address":address};
+    
+  data={information,"food":{foodlist}};
+  console.log(JSON.stringify(data));
 }
-var orderinfo=[];
+
 
 function opencart() {
     document.getElementById("popup").style.display = "block";
@@ -229,12 +235,6 @@ function additem(){
 additem();
 
 /* Button saveorder to json */
-function Saveorder(){
-  fs=require("fs");
-  var button =document.getElementById("Savebutton").addEventListener("click",Saveorder());
-  data=JSON.stringify(foodlist);
-fs.writeFile('data.json', data, 'utf8', callback);
-}
 
 /*
 
@@ -267,6 +267,7 @@ $(document).ready(function(){
 
 
 </script>
+
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -295,6 +296,11 @@ $(document).ready(function(){
         socket.on('connect', () => {
             console.log("connected server");
         })
+        /* function gửi data */
+        function senddata(){
+          socket.emit(
+            'Data',data)
+        }
         document.addEventListener('DOMContentLoaded', function () {
 				document.querySelector('.buyer').onsubmit = function (
 					e
