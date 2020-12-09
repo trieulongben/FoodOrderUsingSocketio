@@ -45,14 +45,10 @@ function readTextFile(file, callback) {
 //     console.log(dataTest[0].CustomerID);
 // });
 
-// btnCheck.onclick = () => {
-//     let li = document.createElement ("LI");
-//     li.append(data[0].CustomerID);
-//     li.setAttribute('class',`index-text`)
-//     innerCustomerID[0].appendChild(li);
-    
-//     // innerCustomerID.append(li);
-// }
+btnCheck.onclick = () => {
+    htmlList.innerHTML = '';
+    htmlDone.innerHTML = contentCustomerID.join('');
+}
 var data = [{"CustomerID": "0001",
 "ListOfFood" :[
     {"nameOfFood": "Rice", "Amount": "1", "Price": "5.000VND"},
@@ -84,4 +80,7 @@ var htmlList = document.getElementById('todo-List');
     });
     
     htmlList.innerHTML = contentCustomerID.join('');
+
+var htmlDone = document.getElementById('done-list');
+
 
