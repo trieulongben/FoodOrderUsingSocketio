@@ -48,15 +48,16 @@ function readTextFile(file, callback) {
 btnCheck.onclick = () => {
     htmlList.innerHTML = '';
     htmlDone.innerHTML = contentCustomerID.join('');
+    client.emit('Done',"Your order form will be delivery in 15 minutes.")
 }
-var data = [{"CustomerID": "0001",
-"ListOfFood" :[
-    {"nameOfFood": "Rice", "Amount": "1", "Price": "5.000VND"},
-    {"nameOfFood": "Noodle", "Amount": "2", "Price": "10.000VND"},
-    {"nameOfFood": "Soup", "Amount": "3", "Price": "15.000VND"}
-]  
-}
-]
+// var data = [{"CustomerID": "0001",
+// "ListOfFood" :[
+//     {"nameOfFood": "Rice", "Amount": "1", "Price": "5.000VND"},
+//     {"nameOfFood": "Noodle", "Amount": "2", "Price": "10.000VND"},
+//     {"nameOfFood": "Soup", "Amount": "3", "Price": "15.000VND"}
+// ]  
+// }
+// ]
 
 var contentNOF = data[0].ListOfFood.map(function(item){
     return '<div class="Check index-text">' + item.nameOfFood + '</div>';
@@ -79,7 +80,9 @@ var htmlList = document.getElementById('todo-List');
         
     });
     
-    htmlList.innerHTML = contentCustomerID.join('');
+    function innerReceive() {
+        htmlList.innerHTML = contentCustomerID.join('');
+}
 
 var htmlDone = document.getElementById('done-list');
 

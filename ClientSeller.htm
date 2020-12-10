@@ -106,6 +106,22 @@
 
     </div>
     <script src="ClientSeller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js">
+    </script>
+    <script>
+        const client = io();
+        var dataReceive = '';
+        client.on("connect", () => {
+            client.emit('connection', 'New client connected...')
+            console.log("Connected to server!");
+            client.on("Receive", (data) =>{
+                dataReceive = JSON.parse(data.data);
+                client.emit('Received',"We've been receiving...")
+                innerReceive();
+            })
+
+        })
+    </script>
 </body>
 
 </html>
