@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type"text/css" href="ClientSeller.css">
+    <title>Seller Tab</title>
+    <link href="https://fonts.googleapis.com/css?kit=lJwU-pQ8jGpmUexDiiTL2sRjpTfDRdLXtKH0SH9kUtx6TRhCwNnWmTokm"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="font-Jost">. S e l l e r .</div>
+    </header>
+    <!-- Client seller -->
+    <div class="container">
+        <!-- Tab for seller -->
+        <div class="tab-container">
+            <div class="tab-arrangement">
+
+                <div class="btn" id="btnProcessing">
+                    <p>Processing</p>
+                </div>
+                <div class="btn" id="btnDone">
+                    <p>Done</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- Order form of customer -->
+        <div class="order-form-container">
+            <div class="order-form">
+                <div class="handle-form">
+                    <div class="listOrder-container">
+                        <div class="listOrder">
+                            <p>
+                                Customer ID
+                            </p>
+                            
+                        </div>
+                        <div class="listOrder " >
+                            <p>
+                                List of Food
+                            </p>
+                        </div>
+                        <div class="listOrder ">
+                            <p>
+                                Amount
+                            </p>
+                        </div>
+                        <div class="listOrder">
+                            <p>
+                                Price
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                            <ul class="index-text" id="todo-List"></ul>
+                    </div>
+                    <!-- Button check form -->
+                    <div class="btn-container">
+                        <button class="btnCheck" id="btn-check">Done</button>
+                        <!-- <button class="btnDone">Done</button> -->
+                    </div>
+                </div>
+                <div class="handle-form hidden">
+                    <div class="listOrder-container">
+                        <div class="listOrder">
+                            <p>
+                                Customer ID
+                            </p>
+                        </div>
+                        <div class="listOrder">
+                            <p>
+                                List of Food
+                            </p>
+                        </div>
+                        <div class="listOrder" >
+                            <p>
+                                Amount
+                            </p>
+                        </div>
+                        <div class="listOrder">
+                            <p>
+                                Price
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="index-text" id="done-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="ClientSeller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js">
+    </script>
+    <script>
+        const client = io();
+        var dataReceive = '';
+        client.on("connect", () => {
+            client.emit('connection', 'New client connected...')
+            console.log("Connected to server!");
+            client.on("Receive", (data) =>{
+                dataReceive = JSON.parse(data.data);
+                client.emit('Received',"We've been receiving...")
+                innerReceive();
+            })
+
+        })
+    </script>
+</body>
+
+</html>
+<script>
+var btnDone = document.getElementById('btnDone');
+var listOrder = document.getElementsByClassName('handle-form');
+var btnProcessing = document.getElementById('btnProcessing');
+var btnReceive = document.getElementById('btnReceive');
+var test = document.getElementsByClassName('test');
+var innerCustomerID = document.getElementsByClassName('Check');
+var btnCheck = document.getElementById('btn-check');
+
+// var dataTest = [{CustomerID: 0001,
+// ListOfFood :[
+//     {nameOfFood: "Rice", Amount: 1, Price: "5.000VND"},
+//     {nameOfFood: "Noodle", Amount: 2, Price: "10.000VND"},
+//     {nameOfFood: "Soup", Amount: 3, Price: "15.000VND"}
+// ]  
+// }
+// ]
+btnDone.onclick = () => {
+    if(listOrder[0].className.split(' ').length == 1){
+        listOrder[0].className += ' hidden';
+    }
+    listOrder[1].className = listOrder[1].className.replace(' hidden','');
+}
+
+btnProcessing.onclick = () => {
+    if(listOrder[1].className.split(' ').length == 1){
+        listOrder[1].className += ' hidden';
+    }
+    listOrder[0].className = listOrder[0].className.replace(' hidden','');
+}
+
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+// readTextFile("./data.json", function(text){
+//     data = JSON.parse(text);
+//     console.log(dataTest[0].CustomerID);
+// });
+
+btnCheck.onclick = () => {
+    htmlList.innerHTML = '';
+    htmlDone.innerHTML = contentCustomerID.join('');
+    client.emit('Done',"Your order form will be delivery in 15 minutes.")
+}
+// var data = [{"CustomerID": "0001",
+// "ListOfFood" :[
+//     {"nameOfFood": "Rice", "Amount": "1", "Price": "5.000VND"},
+//     {"nameOfFood": "Noodle", "Amount": "2", "Price": "10.000VND"},
+//     {"nameOfFood": "Soup", "Amount": "3", "Price": "15.000VND"}
+// ]  
+// }
+// ]
+
+var contentNOF = data[0].ListOfFood.map(function(item){
+    return '<div class="Check index-text">' + item.nameOfFood + '</div>';
+});
+
+var contentAmount = data[0].ListOfFood.map(function(item){
+    return '<div class="Check index-text">' + item.Amount + '</div>';
+});
+
+var contentPrice = data[0].ListOfFood.map(function(item){
+    return '<div class="Check index-text">' + item.Price + '</div>';
+});
+
+var htmlList = document.getElementById('todo-List');
+// var contentListOfFood = data[1].map(function(item){
+    //     return '<div class="listOrder index-text"><p>' + item.nameOfFood + '</p></div>';
+    // })
+    var contentCustomerID = data.map(function(item){
+        return '<li><div class="food-order Check"><p class="index-text">' + item.CustomerID + '</p></div>'+ '<div class="food-order">' +  contentNOF + '</div>' +'<div class="food-order">' + contentAmount + '</div>' + '<div class="food-order">' + contentPrice +'</div></li>';
+        
+    });
+    
+    function innerReceive() {
+        htmlList.innerHTML = contentCustomerID.join('');
+}
+
+var htmlDone = document.getElementById('done-list');
+
+</script>
+
+<style> 
+header{
+    background-color: salmon;
+    width: 100%;
+    height: 40%;
+}
+body {
+    background-color: rgb(255, 231, 228);
+    margin: 0px;
+}
+
+.container {
+    background-color: rgb(255, 231, 228);
+    margin: 20px 20% 0 20%;
+}
+
+.tab-container{
+    background-color: rgb(255, 231, 228);
+    margin-top: 50px;
+    width: 100%;
+    height: 100px;
+    /* margin: 0 0 0 26%; */
+    
+}
+.tab-arrangement{
+    /* position: absolute; */
+    /* align-self: center; */
+    display: flex;
+    /* gap: 5px; */
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0 0 0 25%;
+    width: 75%;
+}
+
+.order-form-container{
+    background-color: rgb(255, 231, 228);
+    /* margin: 20px 0 0 18%; */
+    /* width: 80%; */
+}
+
+.listOrder-container{
+    background-color: lavender;
+    margin-top: 80px;
+    width: 100%;
+    /* height: 200px; */
+    display: flex;
+    flex-direction: row;
+}
+
+.listOrder {
+    width: 25%;
+    /* height: 200px; */
+    font-size: 20px;
+    justify-content: center;
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+    
+.order-form{
+    /* margin: 0 0 0 22%; */
+    border: white solid 3px;
+    border-radius: 10px;
+    /* width: 80%; */
+    height: 600px;
+    background-color: white;
+}
+
+.font-Jost{
+    font-family: 'Jost', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.font-Prata{
+    font-family: 'Prata', serif;
+    text-align: center;
+    font-style: italic;
+    font-size: 30px;
+}
+
+.font-PlayfairDisplay{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-style: italic;
+}
+.btn-container{
+    display: flex;
+    flex-direction: row;
+}
+.btn {
+   font-family: 'Prata', serif;
+   color: white;
+   font-size: 2em;
+   width: 32%;
+   /* height: 100px; */
+   background-color: salmon;
+   border: white solid 2px;
+   border-radius: 10px;
+   position: relative;
+   transition: 0.25s; 
+   text-align: center;
+   /* margin: 20% 0 0 10%; */
+   margin-top: 5%;
+
+}
+
+.done-form{
+    background-color: white;
+    
+}
+
+.btnCheck {
+    font-family: 'Prata', serif;
+    font-size: 0.75em;
+    text-align: center;
+    color: white;
+    background-color: rgb(176, 176, 241);
+    width: 10%;
+    border: rgb(176, 176, 241) solid 2px;
+    border-radius: 5px;
+    transition: 0.25s;
+    margin: 1% 0 0 88%;
+}
+.btnDone {
+    font-family:'Prata', serif ;
+    font-size: 0.75em; 
+    text-align: center;
+    color: white;
+    background-color: rgb(176, 176, 241);
+    width: 8%;
+    border: rgb(176, 176, 241) solid 2px;
+    border-radius: 5px;
+    transition: 0.25s;
+    margin: 1% 0 0 10px;
+}
+
+.btn:hover {
+    background-color: white;
+    cursor: pointer;
+    border: white solid 1px;
+    color: salmon;
+}
+
+.btnCheck:hover{
+    background-color: white;
+    cursor: pointer;
+    border: rgb(176, 176, 241) solid 1px;
+    color: rgb(176, 176, 241)
+}
+.index-text{
+    font-family: 'Prata', serif;
+    font-size: 15px;
+    list-style-type: none;
+}
+
+.Check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.hidden{
+    display: none;
+}
+
+@media screen and (max-width: 1286px){
+    .btn{
+        font-size: 1.75em;
+        margin-top: 8%;
+         
+    }
+}
+
+@media screen and (max-width: 1110px){
+    .btn{
+        font-size: 1.65em;
+        margin-top: 9%;
+
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .btn{
+        font-size: 1.5em;
+        margin-top: 10%;
+        /* width: auto; */
+
+    }
+}
+@media screen and (max-width: 930px){
+    .btn{
+        font-size: 20px;
+        margin-top: 14%;
+    }
+    .btnCheck{
+        font-size: 0.65em;
+    }
+    .listOrder-container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .listOrder {
+        width: 100%;
+    }
+}
+
+ul {
+    padding: 0;
+    width: 100%;
+    margin-top: 30px;
+    /* height: 200px; */
+    /* display: flex;
+    flex-direction: column; */
+}
+li {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+}
+
+.food-items{
+    display: flex;
+    flex-direction: column;
+}
+
+.food-order{
+    width: 25%;
+    /* height: 200px; */
+    font-size: 20px;
+    justify-content: center;
+
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+</style>
